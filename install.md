@@ -14,10 +14,10 @@ Se porneste un "Terminal" ca Administrator si se ruleaza comanda de mai jos pent
 
 ## Pasul 2
 
-Se restarteaza calculatorul.
+Se restarteaza calculatorul si se asteapta sa porneasca Docker Desktop
 
 ## Pasul 3
-Se porneste un "Terminal" ca Administrator si se ruleaza comanda de mai jos pentru a continua instalarea kit-ului.
+Se porneste un "Terminal" si se ruleaza comanda de mai jos pentru a continua instalarea kit-ului.
 
 ```powershell
 .\post-install.ps1
