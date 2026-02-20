@@ -111,16 +111,21 @@ if (Test-Path $VSCodePath) {
 }
 
 # ----------------------------------------------------------
-# 6. Install VS Code WSL Extension if missing
+# 6. Install VS Code Extensions (WSL, Python, Jupyter)
 # ----------------------------------------------------------
 $CodeCmd = "$env:ProgramFiles\Microsoft VS Code\bin\code.cmd"
 if (Test-Path $CodeCmd) {
+    Write-Host "Checking VS Code extensions..." -ForegroundColor Cyan
     $Extensions = & $CodeCmd --list-extensions
-    if ($Extensions -notcontains "ms-vscode-remote.remote-wsl") {
-        Write-Host "Installing VS Code WSL extension..." -ForegroundColor Yellow
-        & $CodeCmd --install-extension ms-vscode-remote.remote-wsl --force
-    } else {
-        Write-Host "VS Code WSL extension already installed" -ForegroundColor Green
+    
+    $TargetExtensions = @("ms-vscode-remote.remote-wsl", "ms-python.python", "ms-toolsai.jupyter")
+    foreach ($Ext in $TargetExtensions) {
+        if ($Extensions -notcontains $Ext) {
+            Write-Host "Installing VS Code extension: $Ext..." -ForegroundColor Yellow
+            & $CodeCmd --install-extension $Ext --force
+        } else {
+            Write-Host "VS Code extension $Ext already installed" -ForegroundColor Green
+        }
     }
 }
 
