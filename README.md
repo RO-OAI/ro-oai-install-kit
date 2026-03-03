@@ -10,7 +10,7 @@ Urmați pașii de mai jos pentru a configura mediul de lucru pentru concurs.
 
 Pentru a rula scripturile de instalare, trebuie să setăm o politică de execuție mai permisivă.
 
-1. Deschideți un **Terminal (PowerShell)** cu drepturi de **Administrator**.
+1. Deschideți un **Terminal (PowerShell)** cu drepturi de **Administrator** în folderul în care a fost descărcat kitul de instalare.
 2. Rulați următoarea comandă:
    ```powershell
    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
@@ -19,7 +19,7 @@ Pentru a rula scripturile de instalare, trebuie să setăm o politică de execu�
 
 ## Pasul 2: Instalarea Kit-ului (Partea I)
 
-Rămâneți în **Terminalul (PowerShell)** cu drepturi de **Administrator** și lansați scriptul principal de instalare:
+Rămâneți în **Terminalul (PowerShell)** cu drepturi de **Administrator** (deschis în folderul kitului) și lansați scriptul principal de instalare:
 
 ```powershell
 .\install.ps1
@@ -39,7 +39,7 @@ Acest script va instala:
 
 ## Pasul 4: Finalizarea instalării (Partea II)
 
-După ce Docker este funcțional, deschideți un **Terminal (PowerShell)** (nu este necesar Admin de data aceasta, dar este permis) și rulați scriptul de post-instalare:
+După ce Docker este funcțional, deschideți un **Terminal (PowerShell)** în folderul kitului (nu este necesar Admin de data aceasta, dar este permis) și rulați scriptul de post-instalare:
 
 ```powershell
 .\post-install.ps1
