@@ -14,7 +14,7 @@ $DesktopPath = [System.IO.Path]::Combine($env:USERPROFILE, "Desktop")
 $OniaSource = Join-Path $PSScriptRoot "ONIA"
 $OniaDest = Join-Path $DesktopPath "ONIA"
 $ConnectionFile = Join-Path $OniaDest "jupyter_connection.txt"
-$ImageName = "quay.io/jupyter/scipy-notebook:2026-02-19"
+$ImageName = "ghcr.io/ro-oai/ro-oai-install-kit-image:sha-a758602"
 $ContainerName = "jupyter_server"
 
 # 4. Copy ONIA Folder to Desktop and create Jupyter Connection File
@@ -34,8 +34,8 @@ if (docker ps -a -q --filter "name=$ContainerName") {
     docker rm -f $ContainerName | Out-Null
 }
 
-Write-Host "Starting Jupyter with a random token..." -ForegroundColor Cyan
-docker run -d --name $ContainerName --restart always -p 8888:8888 -e JUPYTER_TOKEN=$RandomToken $ImageName
+Write-Host "Starting Jupyter with a random token and mapped volume..." -ForegroundColor Cyan
+docker run -d --name $ContainerName --restart always -p 8888:8888 -v "${OniaDest}:/home/jovyan/work" -e JUPYTER_TOKEN=$RandomToken $ImageName
 
 # 6. Create Jupyter Connection File in the copied folder
 if (Test-Path $OniaDest) {
@@ -51,6 +51,15 @@ Direct Link: $JupyterUrl
 "@
     $ConnectionContent | Out-File -FilePath $ConnectionFile -Encoding utf8
     Write-Host "Jupyter connection file created at $ConnectionFile" -ForegroundColor Green
+
+    # Create an Internet Shortcut (.url) file to open Jupyter directly
+    $ShortcutFile = Join-Path $OniaDest "Open_Jupyter.url"
+    $ShortcutContent = @"
+[InternetShortcut]
+URL=$JupyterUrl
+"@
+    $ShortcutContent | Out-File -FilePath $ShortcutFile -Encoding utf8
+    Write-Host "Jupyter shortcut created at $ShortcutFile" -ForegroundColor Green
 }
 
 # 8. Final Message
