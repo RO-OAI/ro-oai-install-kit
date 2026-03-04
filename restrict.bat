@@ -3,7 +3,7 @@ setlocal ENABLEDELAYEDEXPANSION
 
 :: Set proxy server and exception
 set "proxyServer=proxy.olimpiada-ai.ro:3128"
-set "exceptions=localhost;127.0.0.1;*olimpiada-ai.ro*"
+set "exceptions=localhost;127.0.0.1;*.olimpiada-ai.ro*"
 
 :: Optional: proxy authentication (leave empty if proxy has no auth)
 set "proxyUser="
