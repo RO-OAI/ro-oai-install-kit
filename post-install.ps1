@@ -43,12 +43,17 @@ docker run -d --name $ContainerName --restart always -p 8888:8888 -v "${OniaDest
 # 6. Create Jupyter README File in the copied folder
 if (Test-Path $OniaDest) {
     $JupyterUrl = "http://localhost:8888/?token=$RandomToken"
+    $PlatformUrl = "https://platform.olimpiada-ai.ro/ro"
     $ReadmeContent = @"
 # Informații Conectare Jupyter
 
-Aceasta este folderul tău de lucru (ONIA). Mai jos găsești datele necesare pentru a accesa mediul Jupyter Notebook.
+Aceasta este folderul tău de lucru (ONIA). Mai jos găsești datele necesare pentru a accesa mediul Jupyter Notebook și link-ul către platforma concursului.
 
-### 🔗 Link de Conectare
+### 🌐 Platforma Concursului
+Poți accesa platforma direct prin acest link sau folosind scurtătura **"Platforma_OAI.url"** din acest folder:
+**Link:** [$PlatformUrl]($PlatformUrl)
+
+### 🔗 Link de Conectare Jupyter
 Poti accesa Jupyter folosind scurtătura **"Open_Jupyter.url"** din acest folder sau direct prin acest link:
 **Link:** [$JupyterUrl]($JupyterUrl)
 
@@ -77,6 +82,15 @@ URL=$JupyterUrl
 "@
     $ShortcutContent | Out-File -FilePath $ShortcutFile -Encoding utf8
     Write-Host "Jupyter shortcut created at $ShortcutFile" -ForegroundColor Green
+
+    # Create an Internet Shortcut (.url) file for the Platform
+    $PlatformShortcutFile = Join-Path $OniaDest "Platforma_OAI.url"
+    $PlatformShortcutContent = @"
+[InternetShortcut]
+URL=$PlatformUrl
+"@
+    $PlatformShortcutContent | Out-File -FilePath $PlatformShortcutFile -Encoding utf8
+    Write-Host "Platform shortcut created at $PlatformShortcutFile" -ForegroundColor Green
 }
 
 # 8. Final Message

@@ -75,8 +75,8 @@ După ce Docker este funcțional, deschideți un **Terminal (PowerShell)** în f
 Acest pas va:
 - Descărca imaginea Docker pentru Jupyter.
 - Crea folderul `ONIA` pe Desktop.
-- Genera fișierul `README.md` cu datele de conectare.
-- Crea scurtătura `Open_Jupyter.url` pentru acces rapid.
+- Genera fișierul `README.md` cu datele de conectare și link-ul platformei.
+- Crea scurtăturile `Open_Jupyter.url` și `Platforma_OAI.url` pentru acces rapid.
 
 ## Pasul 5: Verificarea Instalării
 
