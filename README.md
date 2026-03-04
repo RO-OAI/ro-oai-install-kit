@@ -6,6 +6,15 @@ Urmați pașii de mai jos pentru a configura mediul de lucru pentru concurs.
 
 ---
 
+## Descărcarea Kitului
+
+1. Accesați pagina GitHub a proiectului.
+2. Apăsați butonul verde **"Code"**.
+3. Selectați **"Download ZIP"**.
+4. Dezarhivați conținutul într-un folder pe calculatorul local (de exemplu, pe Desktop).
+
+---
+
 ## Pasul 1: Configurarea permisiunilor PowerShell
 
 Pentru a rula scripturile de instalare, trebuie să setăm o politică de execuție mai permisivă.
