@@ -39,6 +39,24 @@ Acest script va instala:
 - Docker Desktop
 - VS Code și extensiile necesare
 
+### ⚠️ Depanare: Dacă instalarea eșuează la activarea WSL sau Docker
+
+Dacă scriptul `install.ps1` raportează erori legate de "Virtual Machine Platform" sau Docker nu pornește, este foarte probabil ca **virtualizarea să fie dezactivată din BIOS**.
+
+**Cum verificați:**
+1. Deschideți **Task Manager** (Ctrl+Shift+Esc).
+2. Mergeți la tab-ul **Performance** și selectați **CPU**.
+3. În partea dreaptă-jos, căutați **Virtualization**.
+   - Dacă scrie **Enabled**, virtualizarea este activă.
+   - Dacă scrie **Disabled**, trebuie activată din BIOS/UEFI.
+
+**Cum activați în BIOS:**
+- Reporniți calculatorul și intrați în setările BIOS/UEFI (de regulă apăsând F2, F10, F12 sau Del la pornire).
+- Căutați și activați (setați pe **Enabled**):
+  - **Intel VT-x** sau **Intel Virtualization Technology** (pentru procesoare Intel).
+  - **AMD-V** sau **SVM Mode** (pentru procesoare AMD).
+- Salvați și ieșiți (F10), apoi reîncercați instalarea.
+
 ## Pasul 3: Repornirea sistemului
 
 1. **Reporniți calculatorul.**

@@ -6,8 +6,8 @@ if (Get-Command "docker.exe" -ErrorAction SilentlyContinue) {
     exit 1
 }
 
-# 2. Generate a random 12-character token
-$RandomToken = [Convert]::ToBase64String([Guid]::NewGuid().ToByteArray()).Substring(0, 12)
+# 2. Generate a random 32-character alphanumeric token
+$RandomToken = -join ([char[]]((48..57) + (65..90) + (97..122) | Get-Random -Count 32))
 
 # 3. Setup Paths and Variables
 $DesktopPath = [System.IO.Path]::Combine($env:USERPROFILE, "Desktop")
@@ -20,7 +20,10 @@ $ContainerName = "jupyter_server"
 # 4. Copy ONIA Folder to Desktop and create Jupyter Connection File
 if (Test-Path $OniaSource) {
     Write-Host "Copying ONIA folder to Desktop..." -ForegroundColor Cyan
-    Copy-Item -Path $OniaSource -Destination $OniaDest -Recurse -Force
+    if (-not (Test-Path $OniaDest)) {
+        New-Item -ItemType Directory -Path $OniaDest -Force | Out-Null
+    }
+    Copy-Item -Path (Join-Path $OniaSource "*") -Destination $OniaDest -Recurse -Force
 } else {
     Write-Warning "ONIA source folder not found at $OniaSource"
 }
