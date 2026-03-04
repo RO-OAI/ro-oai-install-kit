@@ -76,6 +76,17 @@ Acest pas va:
 - Descărca imaginea Docker pentru Jupyter.
 - Crea folderul `ONIA` pe Desktop.
 - Genera fișierul `jupyter_connection.txt` cu datele de conectare.
+- Crea scurtătura `Open_Jupyter.url` pentru acces rapid.
+
+## Pasul 5: Verificarea Instalării
+
+Pentru a te asigura că totul este configurat corect, urmează acești pași:
+
+1. Navighează pe **Desktop** și deschide folderul **ONIA**.
+2. Identifică și deschide fișierul (scurtătura) numit **"Open_Jupyter.url"**. Aceasta va deschide interfața Jupyter în browserul tău.
+3. În interfața Jupyter, caută și deschide notebook-ul **`test_imports.ipynb`**.
+4. Rulează celulele din notebook (apasă **Shift + Enter** pe fiecare celulă sau butonul **Run** de sus).
+5. Dacă toate celulele rulează fără erori, înseamnă că mediul de lucru este pregătit pentru concurs!
 
 ---
 

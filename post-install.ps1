@@ -38,7 +38,7 @@ if (docker ps -a -q --filter "name=$ContainerName") {
 }
 
 Write-Host "Starting Jupyter with a random token and mapped volume..." -ForegroundColor Cyan
-docker run -d --name $ContainerName --restart always -p 8888:8888 -v "${OniaDest}:/home/jovyan" -e JUPYTER_TOKEN=$RandomToken $ImageName
+docker run -d --name $ContainerName --restart always -p 8888:8888 -v "${OniaDest}:/home/jovyan/work" -w /home/jovyan/work -e JUPYTER_TOKEN=$RandomToken $ImageName
 
 # 6. Create Jupyter Connection File in the copied folder
 if (Test-Path $OniaDest) {
