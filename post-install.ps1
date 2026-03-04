@@ -13,7 +13,7 @@ $RandomToken = -join ([char[]]((48..57) + (65..90) + (97..122) | Get-Random -Cou
 $DesktopPath = [System.IO.Path]::Combine($env:USERPROFILE, "Desktop")
 $OniaSource = Join-Path $PSScriptRoot "ONIA"
 $OniaDest = Join-Path $DesktopPath "ONIA"
-$ConnectionFile = Join-Path $OniaDest "jupyter_connection.txt"
+$ReadmeFile = Join-Path $OniaDest "README.md"
 $ImageName = "ghcr.io/ro-oai/ro-oai-install-kit-image:sha-a758602"
 $ContainerName = "jupyter_server"
 
@@ -40,20 +40,34 @@ if (docker ps -a -q --filter "name=$ContainerName") {
 Write-Host "Starting Jupyter with a random token and mapped volume..." -ForegroundColor Cyan
 docker run -d --name $ContainerName --restart always -p 8888:8888 -v "${OniaDest}:/home/jovyan/work" -w /home/jovyan/work -e JUPYTER_TOKEN=$RandomToken $ImageName
 
-# 6. Create Jupyter Connection File in the copied folder
+# 6. Create Jupyter README File in the copied folder
 if (Test-Path $OniaDest) {
     $JupyterUrl = "http://localhost:8888/?token=$RandomToken"
-    $ConnectionContent = @"
-==================================================
-JUPYTER CONNECTION INFO
-==================================================
-URL:   http://localhost:8888
-TOKEN: $RandomToken
-Direct Link: $JupyterUrl
-==================================================
+    $ReadmeContent = @"
+# Informații Conectare Jupyter
+
+Aceasta este folderul tău de lucru (ONIA). Mai jos găsești datele necesare pentru a accesa mediul Jupyter Notebook.
+
+### 🔗 Link de Conectare
+Poti accesa Jupyter folosind scurtătura **"Open_Jupyter.url"** din acest folder sau direct prin acest link:
+**Link:** [$JupyterUrl]($JupyterUrl)
+
+### 🔑 Token de Acces
+Dacă ți se cere un token pentru autentificare, folosește codul de mai jos:
+**Token:** `$RandomToken`
+
+---
+
+### ⚠️ Depanare: Docker Desktop nu rulează?
+Dacă Jupyter nu se încarcă sau primești o eroare de conexiune, verifică dacă **Docker Desktop** este pornit:
+1. Caută **Docker Desktop** în meniul Start.
+2. Lansează aplicația și așteaptă până când pictograma din bara de sistem (lângă ceas) arată că Docker este "running" (verde).
+3. După ce Docker a pornit, reîncearcă să deschizi link-ul de mai sus.
+
+---
 "@
-    $ConnectionContent | Out-File -FilePath $ConnectionFile -Encoding utf8
-    Write-Host "Jupyter connection file created at $ConnectionFile" -ForegroundColor Green
+    $ReadmeContent | Out-File -FilePath $ReadmeFile -Encoding utf8
+    Write-Host "Jupyter README file created at $ReadmeFile" -ForegroundColor Green
 
     # Create an Internet Shortcut (.url) file to open Jupyter directly
     $ShortcutFile = Join-Path $OniaDest "Open_Jupyter.url"
