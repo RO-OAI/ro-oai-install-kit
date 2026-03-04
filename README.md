@@ -22,7 +22,7 @@ Pentru a rula scripturile de instalare, trebuie să setăm o politică de execu�
 1. Deschideți un **Terminal (PowerShell)** cu drepturi de **Administrator** în folderul în care a fost descărcat kitul de instalare.
 2. Rulați următoarea comandă:
    ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+   Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
    ```
 3. *Notă: După finalizarea tuturor pașilor de instalare, puteți reveni la politica implicită dacă doriți.*
 
