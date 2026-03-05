@@ -61,12 +61,12 @@ Dacă scriptul `install.ps1` raportează erori legate de "Virtual Machine Platfo
 
 1. **Reporniți calculatorul.**
 2. După repornire, autentificați-vă cu același utilizator (cel al elevului).
-3. Așteptați ca **Docker Desktop** să pornească automat.
+3. Așteptați ca **Docker Desktop** să pornească automat. Daca nu porneste automat, porniti manual din meniul Start sau de pe Desktop.
 4. Dacă apare fereastra de login pentru Docker, apăsați butonul **"Skip login"**.
 
 ## Pasul 4: Finalizarea instalării (Partea II)
 
-După ce Docker este funcțional, deschideți un **Terminal (PowerShell)** în folderul kitului (nu este necesar Admin de data aceasta, dar este permis) și rulați scriptul de post-instalare:
+După ce Docker este funcțional, deschideți un **Terminal (PowerShell)** în folderul kitului (este important sa NU fie ca Administrator) și rulați scriptul de post-instalare:
 
 ```powershell
 .\post-install.ps1
