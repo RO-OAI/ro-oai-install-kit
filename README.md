@@ -118,7 +118,7 @@ Soluții pentru cele mai frecvente situații întâlnite în timpul configurări
 ### 2. Cum procedez cu alerta de securitate Windows (Firewall)?
 **Întrebare:** Îmi apare un mesaj de la Windows Security care mă întreabă dacă permit accesul rețelelor publice și private pentru "Docker Desktop Backend". Ce opțiune aleg?
 
-**Răspuns:** Puteți selecta oricare dintre opțiuni (**Allow** sau **Cancel**), ambele sunt acceptabile pentru funcționarea corectă a mediului în acest context.
+**Răspuns:** Recomandăm să selectați **Cancel** (Anulare). Totuși, dacă ați apăsat deja pe **Allow** (Permite), nu se va întâmpla nimic neobișnuit și mediul de lucru va funcționa corect în continuare.
 
 ---
 
