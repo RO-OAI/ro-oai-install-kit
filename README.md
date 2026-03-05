@@ -104,7 +104,7 @@ Pentru a restaura accesul complet la internet, rulați din nou scriptul `restric
 
 # Întrebări Frecvente (FAQ) - Instalare și Configurare Mediu de Lucru
 
-Acest document oferă soluții pentru cele mai frecvente situații întâlnite în timpul configurării mediului de concurs.
+Soluții pentru cele mai frecvente situații întâlnite în timpul configurării mediului de concurs.
 
 ---
 
