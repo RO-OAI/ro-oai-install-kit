@@ -101,3 +101,44 @@ Pentru a restricționa accesul la internet, rulați scriptul `restrict.bat` cu d
 ### După finalizarea competiției
 Pentru a restaura accesul complet la internet, rulați din nou scriptul `restrict.bat` cu drepturi de **Administrator**.
 - Când sunteți întrebat (prompt), răspundeți cu `n` (No).
+
+# Întrebări Frecvente (FAQ) - Instalare și Configurare Mediu de Lucru
+
+Acest document oferă soluții pentru cele mai frecvente situații întâlnite în timpul configurării mediului de concurs.
+
+---
+
+### 1. Ce fac dacă Docker Desktop nu pornește automat după restart?
+**Întrebare:** Am ajuns la pasul 3, dar după repornirea calculatorului și reconectarea pe contul de elev, Docker Desktop nu pornește automat. Pe contul de administrator funcționează. Ce ar trebui să fac?
+
+**Răspuns:** Dacă Docker Desktop nu pornește automat, acesta trebuie **lansat manual** din meniul Start sau de pe Desktop. Deși în mod normal procesul este automatizat, pornirea manuală a aplicației rezolvă problemele de acces la serverul local constatate în timpul simulărilor.
+
+---
+
+### 2. Cum procedez cu alerta de securitate Windows (Firewall)?
+**Întrebare:** Îmi apare un mesaj de la Windows Security care mă întreabă dacă permit accesul rețelelor publice și private pentru "Docker Desktop Backend". Ce opțiune aleg?
+
+**Răspuns:** Puteți selecta oricare dintre opțiuni (**Allow** sau **Cancel**), ambele sunt acceptabile pentru funcționarea corectă a mediului în acest context.
+
+---
+
+### 3. De ce nu a apărut folderul "ONIA" pe desktop-ul utilizatorului de elev?
+**Întrebare:** Am rulat scriptul, dar folderul ONIA nu a fost creat pe desktop-ul de elev, ci pe cel de administrator. Cum procedez?
+
+**Răspuns:** Scriptul de post-instalare **NU trebuie rulat ca administrator**. Dacă este rulat cu "Run as administrator", sistemul va crea fișierele în profilul administratorului. 
+* **Soluție:** Rulați scriptul direct de pe utilizatorul de elev, prin dublu-click normal, pentru ca scurtăturile și folderele să apară corect pe desktop-ul de lucru.
+
+---
+
+### 4. Ce kernel trebuie să selectez în Jupyter Notebook / VS Code?
+**Întrebare:** La deschiderea fișierului `test_imports.ipynb`, sistemul îmi cere să selectez un kernel. Ce aleg?
+
+**Răspuns:** Trebuie să selectați opțiunea **Python 3 (ipykernel)** din lista derulantă și apoi să apăsați butonul **Select**. După acest pas, ar trebui să vedeți mesajul "All imports working!".
+
+---
+
+### 5. Eroare în VS Code: "The editor could not be opened because the file was not found"
+**Întrebare:** Am lansat VS Code și primesc o eroare care spune că fișierul SQL nu a fost găsit. Cum rezolv?
+
+**Răspuns:** Această eroare apare dacă editorul încearcă să redeschidă un fișier dintr-o locație care nu mai este validă (de exemplu, direct dintr-o arhivă .zip sau o cale temporară de admin). 
+* **Soluție:** Folosiți opțiunea **File > Open Folder** din VS Code și selectați folderul **ONIA** aflat pe desktop-ul utilizatorului curent.
