@@ -114,6 +114,39 @@ Pentru a restricționa accesul la internet, rulați scriptul `restrict.bat` cu d
 Pentru a restaura accesul complet la internet, rulați din nou scriptul `restrict.bat` cu drepturi de **Administrator**.
 - Când sunteți întrebat (prompt), răspundeți cu `n` (No).
 
+### ⚠️ Depanare: Dacă scriptul de blocare/deblocare eșuează
+
+Dacă întâmpinați probleme cu scriptul `restrict.bat` (de exemplu, apare mesajul "Deja blocat" deși nu ați blocat accesul, sau internetul rămâne blocat după deblocare), urmați acești pași:
+
+1. **Resetare rapidă prin script:**
+   - Dacă primiți mesajul "Deja blocat", rulați scriptul din nou și selectați opțiunea de **Deblocare (`n`)**, apoi rulați-l încă o dată și selectați **Blocare (`y`)**. Aceasta va reseta starea corectă a regulilor.
+
+2. **Deblocare manuală (în caz de eroare critică a scriptului):**
+   Dacă scriptul nu reușește să restaureze conexiunea, rulați un **PowerShell ca Administrator** și executați următoarele comenzi:
+   ```powershell
+   # 1. Resetează politica firewall la valorile implicite (permite ieșirea)
+   netsh advfirewall set allprofiles firewallpolicy blockinbound,allowoutbound
+
+   # 2. Șterge regulile specifice adăugate de script (DNS și IP-uri permise)
+   netsh advfirewall firewall delete rule name="AllowDNS"
+   netsh advfirewall firewall delete rule name="all" | Out-Null # Opțional, dacă există reguli cu nume "Allow_..."
+
+   # 3. Reactivează toate regulile firewall existente
+   netsh advfirewall firewall set rule all new enable=yes
+
+   # 4. Dezactivează proxy-ul din setările Windows
+   REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 0 /f
+
+   # 5. Șterge fișierul temporar de reguli dacă există
+   if (Test-Path "C:\Windows\System32\drivers\etc\rules.wfw") { Remove-Item "C:\Windows\System32\drivers\etc\rules.wfw" }
+   ```
+
+3. **Setări Proxy manuale (dacă scriptul nu le-a putut seta automat):**
+   Dacă internetul este blocat dar proxy-ul nu a fost activat, puteți seta manual în Windows (Settings > Network & Internet > Proxy):
+   - **Proxy Server:** `proxy.olimpiada-ai.ro`
+   - **Port:** `3128`
+   - **Exceptions (Nu se folosește proxy pentru):** `localhost;127.0.0.1;*.olimpiada-ai.ro*`
+
 # Întrebări Frecvente (FAQ) - Instalare și Configurare Mediu de Lucru
 
 Soluții pentru cele mai frecvente situații întâlnite în timpul configurării mediului de concurs.

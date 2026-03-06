@@ -21,7 +21,9 @@ goto :eof
 
 :block
 if exist "C:\Windows\System32\drivers\etc\rules.wfw" (
-    echo Deja blocat
+    echo Deja blocat.
+    echo Daca nu ai rulat tu deja scriptul de blocare, ruleaza intai deblocarea si apoi blocarea din nou.
+    pause
     goto :eof
 )
 echo Blocking...
@@ -42,6 +44,7 @@ if defined proxyUser (
     REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyUser /t REG_SZ /d "!proxyUser!" /f
     REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyPass /t REG_SZ /d "!proxyPass!" /f
 )
+pause
 goto :eof
 
 :unblock
@@ -65,3 +68,4 @@ REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v Pr
 REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyOverride /t REG_SZ /d %exceptions% /f
 REG DELETE "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyUser /f 2>nul
 REG DELETE "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyPass /f 2>nul
+pause
