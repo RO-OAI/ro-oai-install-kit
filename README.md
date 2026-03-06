@@ -76,17 +76,29 @@ Acest pas va:
 - Descărca imaginea Docker pentru Jupyter.
 - Crea folderul `ONIA` pe Desktop.
 - Genera fișierul `README.md` cu datele de conectare și link-ul platformei.
-- Crea scurtăturile `Open_Jupyter.url` și `Platforma_OAI.url` pentru acces rapid.
+- Crea scurtăturile `Open_Jupyter.url`, `Platforma_OAI.url` și `Open_in_VSCode.lnk` pentru acces rapid.
 
 ## Pasul 5: Verificarea Instalării
 
 Pentru a te asigura că totul este configurat corect, urmează acești pași:
 
+### A. Verificare Jupyter
 1. Navighează pe **Desktop** și deschide folderul **ONIA**.
 2. Identifică și deschide fișierul (scurtătura) numit **"Open_Jupyter.url"**. Aceasta va deschide interfața Jupyter în browserul tău.
 3. În interfața Jupyter, caută și deschide notebook-ul **`test_imports.ipynb`**.
 4. Rulează celulele din notebook (apasă **Shift + Enter** pe fiecare celulă sau butonul **Run** de sus).
 5. Dacă toate celulele rulează fără erori, înseamnă că mediul de lucru este pregătit pentru concurs!
+
+### B. Verificare VS Code (Opțional)
+Dacă preferi să lucrezi în VS Code, urmează acești pași pentru a-l conecta la mediul de concurs:
+1. Din folderul **ONIA** de pe Desktop, deschide scurtătura **"Open_in_VSCode.lnk"**.
+2. Deschide fișierul `test_imports.ipynb` în VS Code.
+3. Dacă ți se cere să selectezi un kernel (sus în dreapta):
+   - Apasă pe **Select Kernel**.
+   - Alege **Existing Jupyter Server...**.
+   - Introdu adresa URL a serverului Jupyter (o găsești în fișierul `README.md` din folderul **ONIA**, de forma `http://localhost:8888/?token=...`).
+   - După conectare, selectează kernel-ul **Python 3 (ipykernel)**.
+4. Rulează celulele pentru a confirma că totul funcționează.
 
 ---
 

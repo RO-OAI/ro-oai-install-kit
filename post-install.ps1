@@ -91,6 +91,21 @@ URL=$PlatformUrl
 "@
     $PlatformShortcutContent | Out-File -FilePath $PlatformShortcutFile -Encoding utf8
     Write-Host "Platform shortcut created at $PlatformShortcutFile" -ForegroundColor Green
+
+    # 7. Create VS Code Shortcut to the ONIA folder
+    $VSCodePath = "$env:ProgramFiles\Microsoft VS Code\Code.exe"
+    if (Test-Path $VSCodePath) {
+        $WshShell = New-Object -ComObject WScript.Shell
+        $Shortcut = $WshShell.CreateShortcut((Join-Path $OniaDest "Open_in_VSCode.lnk"))
+        $Shortcut.TargetPath = $VSCodePath
+        $Shortcut.Arguments = "`"$OniaDest`""
+        $Shortcut.WorkingDirectory = $OniaDest
+        $Shortcut.Description = "Open ONIA folder in VS Code"
+        $Shortcut.Save()
+        Write-Host "VS Code shortcut created in ONIA folder." -ForegroundColor Green
+    } else {
+        Write-Warning "VS Code not found at $VSCodePath. Skipping shortcut creation."
+    }
 }
 
 # 8. Final Message
