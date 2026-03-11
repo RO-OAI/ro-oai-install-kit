@@ -41,6 +41,11 @@ Acest script va instala:
 
 ### ⚠️ Depanare: Dacă instalarea eșuează la activarea WSL sau Docker
 
+**1. Actualizarea manuală a WSL:**
+Dacă WSL nu a putut fi instalat/actualizat automat sau Docker raportează că versiunea WSL este prea veche, instalați/actualizați-l manual din **Microsoft Store** folosind acest link:
+👉 **[https://aka.ms/wslstorepage](https://aka.ms/wslstorepage)**
+
+**2. Virtualizarea dezactivată din BIOS:**
 Dacă scriptul `install.ps1` raportează erori legate de "Virtual Machine Platform" sau Docker nu pornește, este foarte probabil ca **virtualizarea să fie dezactivată din BIOS**.
 
 **Cum verificați:**
@@ -75,7 +80,7 @@ După ce Docker este funcțional, deschideți un **Terminal (PowerShell)** în f
 Acest pas va:
 - Descărca imaginea Docker pentru Jupyter.
 - Crea folderul `ONIA` pe Desktop.
-- Genera fișierul `README.md` cu datele de conectare și link-ul platformei.
+- Genera fișierul `README.md` cu datele de conectare, link-ul platformei și setările de proxy.
 - Crea scurtăturile `Open_Jupyter.url`, `Platforma_OAI.url` și `Open_in_VSCode.lnk` pentru acces rapid.
 
 ## Pasul 5: Verificarea Instalării
