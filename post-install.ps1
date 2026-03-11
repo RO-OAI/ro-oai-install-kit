@@ -70,6 +70,16 @@ Dacă Jupyter nu se încarcă sau primești o eroare de conexiune, verifică dac
 3. După ce Docker a pornit, reîncearcă să deschizi link-ul de mai sus.
 
 ---
+
+### 🌐 Setări Proxy (Dacă nu ai acces la documentatie/dataset)
+Dacă documentatia sau datasetul nu sunt accesibile, este posibil să fie necesară configurarea manuală a proxy-ului în Windows (Settings > Network & Internet > Proxy):
+
+1. Activează **"Use a proxy server"**.
+2. **Proxy Server:** `proxy.olimpiada-ai.ro`
+3. **Port:** `3128`
+4. **Exceptions (Nu se folosește proxy pentru):** `localhost;127.0.0.1;*.olimpiada-ai.ro*`
+
+---
 "@
     $ReadmeContent | Out-File -FilePath $ReadmeFile -Encoding utf8
     Write-Host "Jupyter README file created at $ReadmeFile" -ForegroundColor Green
