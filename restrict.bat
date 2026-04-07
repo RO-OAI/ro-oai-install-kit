@@ -5,6 +5,13 @@ setlocal ENABLEDELAYEDEXPANSION
 set "proxyServer=proxy.olimpiada-ai.ro:3128"
 set "exceptions=localhost;127.0.0.1;*.olimpiada-ai.ro*"
 
+:: Check if ProxySettingsPerUser is set to 0 in Policies (forces HKLM)
+set "regRoot=HKCU"
+reg query "HKLM\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxySettingsPerUser 2>nul | find "0x0" >nul
+if %errorlevel% equ 0 set "regRoot=HKLM"
+
+echo Using registry root: %regRoot%
+
 :: Optional: proxy authentication (leave empty if proxy has no auth)
 set "proxyUser="
 set "proxyPass="
@@ -37,12 +44,13 @@ for %%i in (%ipRanges%) do (
     netsh advfirewall firewall add rule name="Allow_%%i" dir=out action=allow remoteip=%%i enable=yes
 )
 
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 1 /f
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /t REG_SZ /d %proxyServer% /f
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyOverride /t REG_SZ /d %exceptions% /f
+REG ADD "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 1 /f
+REG ADD "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /t REG_SZ /d %proxyServer% /f
+REG ADD "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyOverride /t REG_SZ /d %exceptions% /f
+REG ADD "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v AutoDetect /t REG_DWORD /d 0 /f
 if defined proxyUser (
-    REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyUser /t REG_SZ /d "!proxyUser!" /f
-    REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyPass /t REG_SZ /d "!proxyPass!" /f
+    REG ADD "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyUser /t REG_SZ /d "!proxyUser!" /f
+    REG ADD "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyPass /t REG_SZ /d "!proxyPass!" /f
 )
 pause
 goto :eof
@@ -63,9 +71,9 @@ if exist "C:\Windows\System32\drivers\etc\rules.wfw" (
     netsh advfirewall firewall set rule all new enable=yes
 )
 
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 0 /f
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /t REG_SZ /d %proxyServer% /f
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyOverride /t REG_SZ /d %exceptions% /f
-REG DELETE "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyUser /f 2>nul
-REG DELETE "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyPass /f 2>nul
+REG ADD "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 0 /f
+REG ADD "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /t REG_SZ /d %proxyServer% /f
+REG ADD "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyOverride /t REG_SZ /d %exceptions% /f
+REG DELETE "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyUser /f 2>nul
+REG DELETE "%regRoot%\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyPass /f 2>nul
 pause
