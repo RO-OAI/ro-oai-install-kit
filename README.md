@@ -90,14 +90,22 @@ Pentru a te asigura că totul este configurat corect, urmează acești pași:
 ### A. Verificare Jupyter
 1. Navighează pe **Desktop** și deschide folderul **ONIA**.
 2. Identifică și deschide fișierul (scurtătura) numit **"Open_Jupyter.url"**. Aceasta va deschide interfața Jupyter în browserul tău.
-3. În interfața Jupyter, caută și deschide notebook-ul **`test_imports.ipynb`**.
+3. În interfața Jupyter, caută și deschide notebook-ul **`test_imports.ipynb`**. (Acesta ar trebui să apară direct în folderul principal, sau în folderul `work`.)
 4. Rulează celulele din notebook (apasă **Shift + Enter** pe fiecare celulă sau butonul **Run** de sus).
 5. Dacă toate celulele rulează fără erori, înseamnă că mediul de lucru este pregătit pentru concurs!
 
 ### B. Verificare VS Code (Opțional)
 Dacă preferi să lucrezi în VS Code, urmează acești pași pentru a-l conecta la mediul de concurs:
+
+**Varianta 1: Dev Containers (Recomandat)**
+Această metodă rulează VS Code direct în interiorul containerului Docker, oferind o experiență integrată.
+1. Din folderul **ONIA** de pe Desktop, deschide scurtătura **"Open_in_VSCode.lnk"**. Aceasta va deschide automat folderul în mediul de container.
+2. Așteptați ca mediul să se configureze. Prima dată poate dura câteva minute (se descarcă componentele necesare în container).
+3. Deschideți `test_imports.ipynb` (se află în folderul principal în interiorul containerului) și rulați celulele. Kernel-ul ar trebui să fie configurat automat.
+
+**Varianta 2: Conectare la serverul Jupyter existent**
 1. Din folderul **ONIA** de pe Desktop, deschide scurtătura **"Open_in_VSCode.lnk"**.
-2. Deschide fișierul `test_imports.ipynb` în VS Code.
+2. Deschide fișierul `test_imports.ipynb` (se află în folderul `work`) în VS Code.
 3. Dacă ți se cere să selectezi un kernel (sus în dreapta):
    - Apasă pe **Select Kernel**.
    - Alege **Existing Jupyter Server...**.

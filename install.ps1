@@ -1,4 +1,4 @@
-# ==========================================================
+﻿# ==========================================================
 # WSL2 + Ubuntu 24.04 + Docker (WSL) + VS Code
 # Non-Interactive, Idempotent, Enterprise Safe
 # Windows 10 2004+ & Windows 11
@@ -118,7 +118,7 @@ if (Test-Path $CodeCmd) {
     Write-Host "Checking VS Code extensions..." -ForegroundColor Cyan
     $Extensions = & $CodeCmd --list-extensions
     
-    $TargetExtensions = @("ms-vscode-remote.remote-wsl", "ms-python.python", "ms-toolsai.jupyter")
+    $TargetExtensions = @("ms-vscode-remote.remote-wsl", "ms-python.python", "ms-toolsai.jupyter", "ms-vscode-remote.remote-containers")
     foreach ($Ext in $TargetExtensions) {
         if ($Extensions -notcontains $Ext) {
             Write-Host "Installing VS Code extension: $Ext..." -ForegroundColor Yellow
