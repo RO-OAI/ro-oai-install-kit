@@ -101,7 +101,7 @@ Dacă preferi să lucrezi în VS Code, urmează acești pași pentru a-l conecta
 Această metodă rulează VS Code direct în interiorul containerului Docker, oferind o experiență integrată.
 1. Din folderul **ONIA** de pe Desktop, deschide scurtătura **"Open_in_VSCode.lnk"**. Aceasta va deschide automat folderul în mediul de container.
 2. Așteptați ca mediul să se configureze. Prima dată poate dura câteva minute (se descarcă componentele necesare în container).
-3. Deschideți `test_imports.ipynb` (se află în folderul principal în interiorul containerului) și rulați celulele. Kernel-ul ar trebui să fie configurat automat.
+3. Deschideți `test_imports.ipynb` (se află în folderul principal în interiorul containerului) și rulați celulele. Kernel-ul ar trebui să fie configurat automat dar daca nu este, cel corect este `/opt/conda/bin/python`.
 
 **Varianta 2: Conectare la serverul Jupyter existent**
 1. Din folderul **ONIA** de pe Desktop, deschide scurtătura **"Open_in_VSCode.lnk"**.
