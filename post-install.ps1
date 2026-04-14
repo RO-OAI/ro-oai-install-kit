@@ -14,7 +14,7 @@ $DesktopPath = [System.IO.Path]::Combine($env:USERPROFILE, "Desktop")
 $OniaSource = Join-Path $PSScriptRoot "ONIA"
 $OniaDest = Join-Path $DesktopPath "ONIA"
 $ReadmeFile = Join-Path $OniaDest "README.md"
-$ImageName = "ghcr.io/ro-oai/ro-oai-install-kit-image:sha-b2ebb19"
+$ImageName = "ghcr.io/ro-oai/ro-oai-install-kit-image:sha-ba14743"
 $ContainerName = "jupyter_server"
 
 # 4. Copy ONIA Folder to Desktop and create Jupyter Connection File
