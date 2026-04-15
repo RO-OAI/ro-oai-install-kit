@@ -85,11 +85,11 @@ URL=$PlatformUrl
         $WshShell = New-Object -ComObject WScript.Shell
         $Shortcut = $WshShell.CreateShortcut((Join-Path $OniaDest "Open_in_VSCode.lnk"))
         $Shortcut.TargetPath = $VSCodePath
-        $Shortcut.Arguments = "--folder-uri `"$DevContainerUri`""
+        $Shortcut.Arguments = "`"$OniaDest`""
         $Shortcut.WorkingDirectory = $OniaDest
         $Shortcut.Description = "Open ONIA folder in Dev Container"
         $Shortcut.Save()
-        Write-Host "VS Code shortcut created in ONIA folder (opens in Dev Container)." -ForegroundColor Green
+        Write-Host "VS Code shortcut created in ONIA folder." -ForegroundColor Green
     } else {
         Write-Warning "VS Code not found at $VSCodePath. Skipping shortcut creation."
     }
