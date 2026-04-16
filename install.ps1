@@ -4,10 +4,6 @@
 # Windows 10 2004+ & Windows 11
 # ==========================================================
 
-param(
-    [string]$VSCodeVersion = "1.86.2"
-)
-
 $ErrorActionPreference = "Stop"
 $ProgressPreference = "SilentlyContinue"
 $LogFile = "C:\Temp\wsl-docker-vscode-install.log"
@@ -103,8 +99,8 @@ $VSCodePath = "$env:ProgramFiles\Microsoft VS Code\Code.exe"
 if (Test-Path $VSCodePath) {
     Write-Host "VS Code already installed" -ForegroundColor Green
 } else {
-    Write-Host "Installing VS Code $VSCodeVersion..." -ForegroundColor Yellow
-    $VSCodeURL = "https://update.code.visualstudio.com/$VSCodeVersion/win32-x64/stable"
+    Write-Host "Installing VS Code Latest..." -ForegroundColor Yellow
+    $VSCodeURL = "https://vscode.download.prss.microsoft.com/dbazure/download/stable/560a9dba96f961efea7b1612916f89e5d5d4d679/VSCodeSetup-x64-1.116.0.exe"
     $VSCodeInstaller = "$env:TEMP\VSCodeSetup.exe"
     Invoke-WebRequest -Uri $VSCodeURL -OutFile $VSCodeInstaller
     Start-Process -FilePath $VSCodeInstaller -ArgumentList "/VERYSILENT /NORESTART /MERGETASKS=!runcode" -Wait
