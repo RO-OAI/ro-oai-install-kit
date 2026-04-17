@@ -1,5 +1,6 @@
 ﻿$DesktopPath = [System.IO.Path]::Combine($env:USERPROFILE, "Desktop")
 $OniaDest = Join-Path $DesktopPath "ONIA"
+$VSCodePath = "$env:ProgramFiles\Microsoft VS Code\Code.exe"
 
 $WshShell = New-Object -ComObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut((Join-Path $OniaDest "Open_in_VSCode.lnk"))
