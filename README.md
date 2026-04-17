@@ -104,7 +104,8 @@ Această metodă rulează VS Code direct în interiorul containerului Docker, of
 3. Deschideți `test_imports.ipynb` (se află în folderul principal în interiorul containerului) și rulați celulele. Kernel-ul ar trebui să fie configurat automat dar daca nu este, cel corect este `/opt/conda/bin/python`.
 
 **Varianta 2: Conectare la serverul Jupyter existent**
-1. Din folderul **ONIA** de pe Desktop, deschide scurtătura **"Open_in_VSCode.lnk"**.
+1. Din folderul **ONIA** de pe Desktop, deschide VS Code FARA a folosi scurtătura **"Open_in_VSCode.lnk"**. (Daca este deschis in devcontainer se da click pe dreptuinghiul albastru si dupa se selecteza close remote session.)
+2. Din VS Code se face click pe **File > Open folder** si se selecteza folderul **ONIA** de pe Desktop. 
 2. Deschide fișierul `test_imports.ipynb` (se află în folderul `work`) în VS Code.
 3. Dacă ți se cere să selectezi un kernel (sus în dreapta):
    - Apasă pe **Select Kernel**.
