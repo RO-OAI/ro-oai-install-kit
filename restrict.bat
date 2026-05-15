@@ -3,7 +3,7 @@ setlocal ENABLEDELAYEDEXPANSION
 
 :: Set proxy server and exception
 set "proxyServer=proxy.olimpiada-ai.ro:3128"
-set "exceptions=localhost;127.0.0.1;*.olimpiada-ai.ro*;jupyter.olimpiada-ai.uvt.ro"
+set "exceptions=localhost;127.0.0.1;*.olimpiada-ai.ro*;*.olimpiada-ai.uvt.ro*"
 
 :: Check if ProxySettingsPerUser is set to 0 in Policies (forces HKLM)
 set "regRoot=HKCU"
