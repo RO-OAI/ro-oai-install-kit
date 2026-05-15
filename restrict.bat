@@ -3,7 +3,7 @@ setlocal ENABLEDELAYEDEXPANSION
 
 :: Set proxy server and exception
 set "proxyServer=proxy.olimpiada-ai.ro:3128"
-set "exceptions=localhost;127.0.0.1;*.olimpiada-ai.ro*"
+set "exceptions=localhost;127.0.0.1;*.olimpiada-ai.ro*;10.*"
 
 :: Check if ProxySettingsPerUser is set to 0 in Policies (forces HKLM)
 set "regRoot=HKCU"
@@ -17,7 +17,7 @@ set "proxyUser="
 set "proxyPass="
 
 :: Define IP ranges
-set ipRanges= 8.8.8.8/32 8.8.4.4/32 91.99.208.14/32 46.225.232.213/32
+set ipRanges= 8.8.8.8/32 8.8.4.4/32 91.99.208.14/32 46.225.232.213/32 10.0.0.0/8
 
 :: Meniu interactiv
 choice /M "Selecteaza y pentru Blocare sau n pentru Deblocare"
