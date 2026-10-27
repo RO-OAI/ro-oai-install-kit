@@ -158,7 +158,7 @@ Dacă întâmpinați probleme cu scriptul `restrict.bat` (de exemplu, apare mesa
 3. **Setări Proxy manuale (dacă scriptul nu le-a putut seta automat):**
    Dacă internetul este blocat dar proxy-ul nu a fost activat, puteți seta manual în Windows (Settings > Network & Internet > Proxy):
    - **Proxy Server:** `proxy.olimpiada-ai.ro`
-   - **Port:** `3128`
+   - **Port:** `80`
    - **Exceptions (Nu se folosește proxy pentru):** `localhost;127.0.0.1;*.olimpiada-ai.ro*`
 
 # Întrebări Frecvente (FAQ) - Instalare și Configurare Mediu de Lucru
